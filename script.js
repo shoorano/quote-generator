@@ -5,7 +5,10 @@ const twitterBtn = document.getElementById('twitter');
 const newQuoteBtn = document.getElementById('new-quote');
 const loader = document.getElementById('loader');
 
-// Show Loading
+function detectMobile() {
+    return( ( window.innerWidth < 900) && ( window.innerHeight < 700) )
+}
+
 function showLoadingSpinner() {
     loader.hidden = false;
     quoteContainer.hidden = true;
@@ -34,10 +37,15 @@ async function getQuote() {
             authorText.innerText = data.author;
         } 
         // Reduce font-size for quotes larger than 120 characters.
-        if (data.quote.length > 120) {
-            quoteText.classList.add('long-quote')
+        if (data.quote.length > 100) {
+            quoteText.classList.remove('quote-mobile');
+            quoteText.classList.add('long-quote');
+        } else if (detectMobile()) {
+            quoteText.classList.remove('long-quote');
+            quoteText.classList.add('quote-mobile');
         } else {
-            quoteText.classList.remove('long-quote')
+            quoteText.classList.remove('quote-mobile');
+            quoteText.classList.remove('long-quote');
         }
         quoteText.innerText = data.quote;
         hideLoadingSpinner();
