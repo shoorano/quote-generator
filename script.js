@@ -37,14 +37,9 @@ async function getQuote() {
             authorText.innerText = data.author;
         } 
         // Reduce font-size for quotes larger than 120 characters.
-        if (data.quote.length > 100) {
-            quoteText.classList.remove('x-long-quote');
+        if (data.quote.length > 130) {
             quoteText.classList.add('long-quote');
-        } else if (data.quote.length > 130) {
-            quoteText.classList.remove('long-quote');
-            quoteText.classList.add('x-long-quote');
         } else {
-            quoteText.classList.remove('x-long-quote');
             quoteText.classList.remove('long-quote');
         }
         quoteText.innerText = data.quote;
