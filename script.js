@@ -38,13 +38,13 @@ async function getQuote() {
         } 
         // Reduce font-size for quotes larger than 120 characters.
         if (data.quote.length > 100) {
-            quoteText.classList.remove('quote-mobile');
+            quoteText.classList.remove('x-long-quote');
             quoteText.classList.add('long-quote');
-        } else if (detectMobile()) {
+        } else if (data.quote.length > 150) {
             quoteText.classList.remove('long-quote');
-            quoteText.classList.add('quote-mobile');
+            quoteText.classList.add('x-long-quote');
         } else {
-            quoteText.classList.remove('quote-mobile');
+            quoteText.classList.remove('x-long-quote');
             quoteText.classList.remove('long-quote');
         }
         quoteText.innerText = data.quote;
