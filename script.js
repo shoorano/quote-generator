@@ -44,7 +44,6 @@ async function getQuote() {
         complete();
     } catch (error) {
         getQuote()
-        
     }
 }
 
