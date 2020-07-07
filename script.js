@@ -6,13 +6,13 @@ const newQuoteBtn = document.getElementById('new-quote');
 const loader = document.getElementById('loader');
 
 // Show Loading
-function loading() {
+function showLoadingSpinner() {
     loader.hidden = false;
     quoteContainer.hidden = true;
 }
 
 // Hide Loading
-function complete() {
+function hideLoadingSpinner() {
     if (!loader.hidden) {
         quoteContainer.hidden = false;
         loader.hidden = true;
@@ -21,7 +21,7 @@ function complete() {
 
 // Get Quote From API
 async function getQuote() {
-    loading()
+    showLoadingSpinner()
     const proxyUrl = "https://gentle-harbor-09399.herokuapp.com/"
     const apiUrl = "http://quotes.stormconsultancy.co.uk/random.json";
     try {
@@ -40,8 +40,7 @@ async function getQuote() {
             quoteText.classList.remove('long-quote')
         }
         quoteText.innerText = data.quote;
-        // Stop loader, show quote.
-        complete();
+        hideLoadingSpinner();
     } catch (error) {
         getQuote()
     }
