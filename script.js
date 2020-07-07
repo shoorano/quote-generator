@@ -40,7 +40,7 @@ async function getQuote() {
         if (data.quote.length > 100) {
             quoteText.classList.remove('x-long-quote');
             quoteText.classList.add('long-quote');
-        } else if (data.quote.length > 150) {
+        } else if (data.quote.length > 130) {
             quoteText.classList.remove('long-quote');
             quoteText.classList.add('x-long-quote');
         } else {
